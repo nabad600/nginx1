@@ -39,7 +39,7 @@ RUN echo "upstream php-upstream { server ${PHP_UPSTREAM_CONTAINER}:${PHP_UPSTREA
 
 # Set Default configuration file
 RUN mkdir /etc/nginx/sites-available
-COPY ./sites/* /etc/nginx/sites-available/ 
+COPY sites/*.* /etc/nginx/sites-available/ 
 
 ADD ./startup.sh /opt/startup.sh
 RUN sed -i 's/\r//g' /opt/startup.sh

@@ -35,11 +35,7 @@ COPY logrotate/nginx /etc/logrotate.d/
 
 # Set upstream conf and remove the default conf
 RUN echo "upstream php-upstream { server ${PHP_UPSTREAM_CONTAINER}:${PHP_UPSTREAM_PORT}; }" > /etc/nginx/conf.d/upstream.conf \
-    && rm /etc/nginx/conf.d/default.conf
-
-# Set Default configuration file
-RUN mkdir /etc/nginx/sites-available
-COPY sites/*.* /etc/nginx/sites-available/ 
+    && rm /etc/nginx/conf.d/default.conf 
 
 ADD ./startup.sh /opt/startup.sh
 RUN sed -i 's/\r//g' /opt/startup.sh

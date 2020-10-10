@@ -36,6 +36,7 @@ COPY logrotate/nginx /etc/logrotate.d/
 # Set upstream conf and remove the default conf
 #RUN echo "upstream php-upstream { server ${CONTAINER}:${PHP_UPSTREAM_PORT}; }" > /etc/nginx/conf.d/upstream.conf \
 #    && rm /etc/nginx/conf.d/default.conf 
+RUN rm /etc/nginx/conf.d/default.conf
 
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["sh", "/usr/local/bin/docker-entrypoint.sh"]
